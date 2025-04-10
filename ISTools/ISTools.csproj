@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED46C028-F83A-4BAC-B846-A7B60556BD91}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISTools</RootNamespace>
+    <AssemblyName>ISTools</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build|AnyCPU'">
+    <OutputPath>bin\Build\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>..\RevitApi\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ASCADLinkMgd">
+      <HintPath>..\RevitApi\ASCADLinkMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ASGeometryMgd">
+      <HintPath>..\RevitApi\ASGeometryMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ASObjectsMgd">
+      <HintPath>..\RevitApi\ASObjectsMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ASProfilesMgd">
+      <HintPath>..\RevitApi\ASProfilesMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Autodesk.SteelConnectionsDB">
+      <HintPath>..\RevitApi\Autodesk.SteelConnectionsDB.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAPI">
+      <HintPath>..\RevitApi\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPISteel">
+      <HintPath>..\RevitApi\RevitAPISteel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\RevitApi\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ISTools\IS_Utils\Debugger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\IS_Utils\Debugger.Designer.cs">
+      <DependentUpon>Debugger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\Objects\ObjKm.cs" />
+    <Compile Include="ISTools\Objects\ObjPlateCollector.cs" />
+    <Compile Include="ISTools\Objects\ObjPlateInJoint.cs" />
+    <Compile Include="ISTools\ParamCombine\ParamCombineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\ParamCombine\ParamCombineForm.Designer.cs">
+      <DependentUpon>ParamCombineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\IsToolsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\IsToolsForm.Designer.cs">
+      <DependentUpon>IsToolsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\ParamFromRoom\ParamFromRoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\ParamFromRoom\ParamFromRoomForm.Designer.cs">
+      <DependentUpon>ParamFromRoomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\SheetsNumber\SheetNumberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\SheetsNumber\SheetNumberForm.Designer.cs">
+      <DependentUpon>SheetNumberForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\TypesRename\TypesRenameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\TypesRename\TypesRenameForm.Designer.cs">
+      <DependentUpon>TypesRenameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\IS_Utils\ChooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\IS_Utils\ChooseForm.Designer.cs">
+      <DependentUpon>ChooseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\SetColor\SetColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\SetColor\SetColorForm.Designer.cs">
+      <DependentUpon>SetColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\SetWorksets\InputDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\SetWorksets\InputDialogForm.Designer.cs">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\SetWorksets\SetWorksetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\SetWorksets\SetWorksetsForm.Designer.cs">
+      <DependentUpon>SetWorksetsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\Objects\ObjColorsData.cs" />
+    <Compile Include="ISTools\Objects\ObjColorByKey.cs" />
+    <Compile Include="ISTools\Objects\ObjExcelTable.cs" />
+    <Compile Include="ISTools\IS_Utils\IsDebugWindow.cs" />
+    <Compile Include="ISTools\IS_Utils\IsHandlerSwitch.cs" />
+    <Compile Include="ISTools\IS_Utils\IsExternalEventHandler.cs" />
+    <Compile Include="ISTools\Objects\ObjRoom.cs" />
+    <Compile Include="ISTools\Objects\ObjSheet.cs" />
+    <Compile Include="ISTools\IS_Utils\IsUtils.cs" />
+    <Compile Include="ISTools\Objects\ObjCategory.cs" />
+    <Compile Include="ISTools\Objects\ObjParamCondition.cs" />
+    <Compile Include="ISTools\Objects\ObjWorkset.cs" />
+    <Compile Include="ISTools\FamilyCatalog.cs" />
+    <Compile Include="ISTools\MarksCatalog.cs" />
+    <Compile Include="ISTools\Materials.cs" />
+    <Compile Include="ISTools\ParamByCat.cs" />
+    <Compile Include="ISTools\ParamCombine\ParamCombine.cs" />
+    <Compile Include="ISTools\ParamFromRoom\ParamFromRoom.cs" />
+    <Compile Include="ISTools\ParamMapping.cs" />
+    <Compile Include="ISTools\SheetsNumber\SheetsNumber.cs" />
+    <Compile Include="ISTools\TypesRename\TypesRename.cs" />
+    <Compile Include="ISTools\SetColor\SetColor.cs" />
+    <Compile Include="ISTools\SetWorksets\SetWorksets.cs" />
+    <Compile Include="ISTools\Objects\ObjRvtLink.cs" />
+    <Compile Include="ISTools\Objects\ObjRvt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ISTools\ParamCombine\ParamCombineForm.resx">
+      <DependentUpon>ParamCombineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\IsToolsForm.resx">
+      <DependentUpon>IsToolsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\ParamFromRoom\ParamFromRoomForm.resx">
+      <DependentUpon>ParamFromRoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\SetColor\SetColorForm.resx">
+      <DependentUpon>SetColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\IS_Utils\ChooseForm.resx">
+      <DependentUpon>ChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\SetWorksets\InputDialogForm.resx">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\SetWorksets\SetWorksetsForm.resx">
+      <DependentUpon>SetWorksetsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\SheetsNumber\SheetNumberForm.resx">
+      <DependentUpon>SheetNumberForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\IS_Utils\Debugger.resx">
+      <DependentUpon>Debugger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\TypesRename\TypesRenameForm.resx">
+      <DependentUpon>TypesRenameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataTableOutput.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Ac32BitAppServer">
+      <Guid>{5BFACC6B-5511-4780-8B11-5CC5C339CE01}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Worksets32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Worksets16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Combine16.png" />
+    <EmbeddedResource Include="Resources\Combine32.png" />
+    <EmbeddedResource Include="Resources\FamilyCatalog16.png" />
+    <EmbeddedResource Include="Resources\FamilyCatalog32.png" />
+    <EmbeddedResource Include="Resources\MarksCatalog16.png" />
+    <EmbeddedResource Include="Resources\MarksCatalog32.png" />
+    <EmbeddedResource Include="Resources\Materials16.png" />
+    <EmbeddedResource Include="Resources\Materials32.png" />
+    <EmbeddedResource Include="Resources\ParamByCat16.png" />
+    <EmbeddedResource Include="Resources\ParamByCat32.png" />
+    <EmbeddedResource Include="Resources\ParamMapping16.png" />
+    <EmbeddedResource Include="Resources\ParamMapping32.png" />
+    <EmbeddedResource Include="Resources\Rooms16.png" />
+    <EmbeddedResource Include="Resources\Rooms32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Set_color_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Set_color_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sheet_number16.png" />
+    <EmbeddedResource Include="Resources\Sheet_number32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\TypesRename32.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
