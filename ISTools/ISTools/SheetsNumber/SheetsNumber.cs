@@ -6,6 +6,8 @@ using System.Data;
 using ISTools.Forms;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace ISTools
 {
@@ -336,31 +338,71 @@ namespace ISTools
             return Result.Succeeded;
         }
     }
-    public class NodeSorter : System.Collections.IComparer
+    public class NodeSorter : IComparer
     {
         public NodeSorter() { }
 
         public int Compare(object _left, object _right)
         {
+            // Преобразуем входные объекты в TreeNode
             TreeNode left = _left as TreeNode;
             TreeNode right = _right as TreeNode;
-            int leftNumber = 0;
-            int rightNumber = 0;
 
-            System.Text.RegularExpressions.Regex leftRegex = new System.Text.RegularExpressions.Regex(@"\d+");
-            System.Text.RegularExpressions.Match leftMatch = leftRegex.Match(left.Text);
-            System.Text.RegularExpressions.Regex rightRegex = new System.Text.RegularExpressions.Regex(@"\d+");
-            System.Text.RegularExpressions.Match rightMatch = leftRegex.Match(right.Text);
+            if (left == null || right == null)
+                throw new ArgumentException("Оба объекта должны быть типа TreeNode.");
 
-            if (leftMatch.Success && rightMatch.Success)
+            // Извлекаем текст из TreeNode
+            string leftText = left.Text.Split(':')[0];
+            string rightText = right.Text.Split(':')[0];
+
+            // Разбиваем строки на текстовую и числовую части
+            string leftPrefix = ExtractPrefix(leftText);
+            string rightPrefix = ExtractPrefix(rightText);
+
+            // Сравниваем текстовые префиксы
+            int prefixComparison = string.Compare(leftPrefix, rightPrefix, StringComparison.Ordinal);
+            if (prefixComparison != 0)
+                return prefixComparison;
+
+            // Если префиксы равны, сравниваем числовые части
+            string[] leftParts = ExtractNumberParts(leftText);
+            string[] rightParts = ExtractNumberParts(rightText);
+
+            int maxLength = Math.Max(leftParts.Length, rightParts.Length);
+            for (int i = 0; i < maxLength; i++)
             {
-                leftNumber = Convert.ToInt32(leftMatch.Value);
-                rightNumber = Convert.ToInt32(rightMatch.Value);
+                // Получаем числовые значения для текущей части
+                int leftNumber = i < leftParts.Length && IsNumeric(leftParts[i]) ? int.Parse(leftParts[i]) : 0;
+                int rightNumber = i < rightParts.Length && IsNumeric(rightParts[i]) ? int.Parse(rightParts[i]) : 0;
+
+                // Сравниваем числа
                 if (leftNumber != rightNumber)
                     return leftNumber - rightNumber;
-                return 0;
             }
+
+            // Если все части равны, строки считаются равными
             return 0;
+        }
+
+        // Вспомогательный метод для извлечения текстового префикса
+        private string ExtractPrefix(string text)
+        {
+            // Удаляем все числа и точки, оставляя только текстовый префикс
+            return Regex.Replace(text, @"[\d\.]+", "").Trim();
+        }
+
+        // Вспомогательный метод для извлечения числовых частей
+        private string[] ExtractNumberParts(string text)
+        {
+            // Удаляем текстовый префикс и разбиваем оставшуюся строку по точкам
+            string numericPart = Regex.Replace(text, @"[^\d\.]", "").Trim('.');
+            return numericPart.Split('.');
+        }
+
+        // Вспомогательный метод для проверки, является ли строка числом
+        private bool IsNumeric(string value)
+        {
+            return int.TryParse(value, out _);
         }
     }
 }
