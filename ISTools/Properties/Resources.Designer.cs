@@ -243,6 +243,16 @@ namespace ISTools.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SheetsCopy32 {
+            get {
+                object obj = ResourceManager.GetObject("SheetsCopy32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TypesRename32 {
             get {
                 object obj = ResourceManager.GetObject("TypesRename32", resourceCulture);

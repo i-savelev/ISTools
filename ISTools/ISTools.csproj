@@ -121,6 +121,15 @@
     <Compile Include="ISTools\ParamFromRoom\ParamFromRoomForm.Designer.cs">
       <DependentUpon>ParamFromRoomForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISTools\SheetsCopy\SheetCopyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ISTools\SheetsCopy\SheetCopyForm.Designer.cs">
+      <DependentUpon>SheetCopyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISTools\SheetsCopy\SheetManager.cs" />
+    <Compile Include="ISTools\SheetsCopy\SheetsCopy.cs" />
+    <Compile Include="ISTools\SheetsCopy\SheetsCopyWindowManager.cs" />
     <Compile Include="ISTools\SheetsNumber\SheetNumberForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +220,9 @@
     <EmbeddedResource Include="ISTools\SetWorksets\SetWorksetsForm.resx">
       <DependentUpon>SetWorksetsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ISTools\SheetsCopy\SheetCopyForm.resx">
+      <DependentUpon>SheetCopyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ISTools\SheetsNumber\SheetNumberForm.resx">
       <DependentUpon>SheetNumberForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +288,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\TypesRename32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SheetsCopy32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
