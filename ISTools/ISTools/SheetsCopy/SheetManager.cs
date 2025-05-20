@@ -1,5 +1,4 @@
 ﻿using Autodesk.Revit.DB;
-using ISTools.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -27,8 +26,7 @@ namespace ISTools.ISTools.SheetsCopy
             BrowserOrganization org = BrowserOrganization.GetCurrentBrowserOrganizationForSheets(doc);
             foreach (var sheet in sheets)
             {
-                ObjSheet sheet_obj = new ObjSheet(sheet.Name, sheet.SheetNumber);
-                sheet_obj.Elem = sheet;
+                ObjSheet sheet_obj = new ObjSheet(sheet.Name, sheet.SheetNumber, sheet);
 
                 List<FolderItemInfo> folderfields = org.GetFolderItems(sheet.Id).ToList();
 

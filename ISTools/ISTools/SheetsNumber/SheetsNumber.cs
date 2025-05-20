@@ -51,8 +51,7 @@ namespace ISTools
 
             foreach (var sheet in shets)
             {
-                ObjSheet sheet_obj = new ObjSheet(sheet.Name, sheet.SheetNumber);
-                sheet_obj.Elem = sheet;
+                ObjSheet sheet_obj = new ObjSheet(sheet.Name, sheet.SheetNumber, sheet);
 
                 List<FolderItemInfo> folderfields = org.GetFolderItems(sheet.Id).ToList();
 
@@ -214,8 +213,7 @@ namespace ISTools
 
                     foreach (var sheet in shetsNew)
                     {
-                        ObjSheet sheetObj = new ObjSheet(sheet.Name, sheet.SheetNumber);
-                        sheetObj.Elem = sheet;
+                        ObjSheet sheetObj = new ObjSheet(sheet.Name, sheet.SheetNumber, sheet);
 
                         List<FolderItemInfo> folderFields = org.GetFolderItems(sheet.Id).ToList();
 

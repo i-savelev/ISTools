@@ -1,0 +1,34 @@
+﻿<Window x:Class="ISTools.SchedulesTableForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ISTools"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Topmost="True" Width="419" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="423*"/>
+        </Grid.RowDefinitions>
+        <TreeView x:Name="treeView" ItemsSource="{Binding TreeViewItemViewModelList}" Margin="5" Grid.Row="1">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="False"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type local:ObjTreeViewItemViewModel}"
+                                  ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                          VerticalAlignment="Center"
+                          Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding Header}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+    </Grid>
+</Window>

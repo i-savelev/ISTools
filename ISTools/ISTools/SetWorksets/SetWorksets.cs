@@ -28,10 +28,11 @@ namespace ISTools
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
-            List<ObjWorkset>worksetsList = new List<ObjWorkset>();
+            List<ObjWorkset> worksetsList = new List<ObjWorkset>();
             List<string> categoriesList = new List<string>();
-            List<string> parameterConditionList = new List<string>() {"равно", "содержит", "не содержит", "не равно" };
+            List<string> parameterConditionList = new List<string>() { "равно", "содержит", "не содержит", "не равно" };
             List<string> parameterBoolConditionList = new List<string>() { "и", "или" };
+            List<string> parameterBoolConditionList_2 = new List<string>() { "и", "или" };
 
             DataTable dtOutput = new DataTable();
             dtOutput.Columns.Add("1");
@@ -39,11 +40,11 @@ namespace ISTools
             var allCategories = doc.Settings.Categories;
             foreach (Category category in allCategories)
             {
-                dtOutput.Rows.Add($"{category.Name} - {(BuiltInCategory)category.Id.IntegerValue}"); 
+                dtOutput.Rows.Add($"{category.Name} - {(BuiltInCategory)category.Id.IntegerValue}");
                 if (category.CategoryType == CategoryType.Model)
                 {
                     categoriesList.Add(category.Name);
-                   
+
                 }
             }
 
@@ -111,13 +112,13 @@ namespace ISTools
                 SetWsToElement();
             });
 
-            window.comboBox1.DataSource = parameterBoolConditionList;
+            window.comboBox1.DataSource = parameterBoolConditionList_2;
             window.groupBox3.Text = "Настройки";
             window.button3.Text = "Сохранить рабочий набор";
             window.button3.Click += (s, e) => { SaveWorkset(); };
             window.button6.Click += (s, e) => { SaveXml(); };
             window.button6.Text = "Сохранить шаблон";
-            window.button9.Text = "Загрузить шаблон"; 
+            window.button9.Text = "Загрузить шаблон";
             window.button9.Click += (s, e) => { LoadXml(); };
             window.button11.Text = "Распределить элементы по наборам";
             window.button11.Click += (s, e) => { handelr.ExternalEvent.Raise(); };
@@ -245,7 +246,7 @@ namespace ISTools
                     {
                         if (categoryName == cat.Name)
                         {
-                            objCat.BuiltIn = (BuiltInCategory)cat.Id.IntegerValue; 
+                            objCat.BuiltIn = (BuiltInCategory)cat.Id.IntegerValue;
                         }
                         if (categoryName == "Выступающие профили")
                         {
@@ -297,7 +298,7 @@ namespace ISTools
             {
                 bool condition = true;
                 string name = inputwindow.textBox2.Text;
-                foreach(ObjWorkset obj in worksetsList)
+                foreach (ObjWorkset obj in worksetsList)
                 {
                     if (name == obj.Name) condition = false;
                 }
@@ -356,7 +357,7 @@ namespace ISTools
                 using (StreamWriter streamwriter = new StreamWriter(file_path))
                 {
                     serializer.Serialize(streamwriter, objWorksets);
-                } 
+                }
             }
 
             void LoadXmlWhenPpen()
@@ -446,7 +447,7 @@ namespace ISTools
                 stopwatch.Start();
 
                 List<Element> ListElementsToSetWorkset = new List<Element>();
-                
+
 
                 List<BuiltInCategory> allBuiltinCategoriesFilterList = new List<BuiltInCategory>();
 
@@ -499,7 +500,7 @@ namespace ISTools
                         }
                         var worksetId = userWorksets.FirstOrDefault(ws => ws.Name.Equals(objWs.Name)).Id;
 
-                        if (objWs.Categories.Count == 0 & objWs.Conditions.Count==0)
+                        if (objWs.Categories.Count == 0 & objWs.Conditions.Count == 0)
                         {
                             continue;
                         }
@@ -592,7 +593,7 @@ namespace ISTools
                 List<bool> andCondition = new List<bool>();
                 List<bool> orCondition = new List<bool>();
                 bool boolResult = false;
-                
+
                 foreach (ObjParamCondition param in objWs.Conditions)
                 {
                     bool paramCondition = false;
@@ -660,7 +661,7 @@ namespace ISTools
                 else if (andCondition.Count == 0) andResult = true;
                 if (orCondition.Count > 0) orResult = orCondition.Any(condition => condition);
                 else if (orCondition.Count == 0) orResult = true;
-                
+
                 boolResult = andResult & orResult;
                 dtOutput.Rows.Add($"---------{boolResult}");
                 return boolResult;
