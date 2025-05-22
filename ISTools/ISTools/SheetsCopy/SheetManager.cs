@@ -1,21 +1,23 @@
 ﻿using Autodesk.Revit.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ISTools.ISTools.SheetsCopy
 {
     internal class SheetManager
     {
         public Document Doc { get; set; }
-        public List<ObjSheet> ObjSheetList = new List<ObjSheet>();  
+        public List<ObjSheet> ObjSheetList = new List<ObjSheet>();
         public SheetManager(Document doc)
         {
             Doc = doc;
             CollectAllSheets(Doc);
         }
-        public void  CollectAllSheets(Document doc)
+        public void CollectAllSheets(Document doc)
         {
             var sheets = new FilteredElementCollector(doc).
                 OfCategory(BuiltInCategory.OST_Sheets).
@@ -55,6 +57,7 @@ namespace ISTools.ISTools.SheetsCopy
         {
             using (Transaction trans = new Transaction(Doc, "Копирование листа"))
             {
+
                 var prefix = window.Window.textBox2.Text;
                 window.Window.progressBar1.Value = 0;
                 window.Window.progressBar1.Maximum = selectedNode.Count;
@@ -63,20 +66,28 @@ namespace ISTools.ISTools.SheetsCopy
                 var sheetList = CollectSelectedSheets(selectedNode);
                 foreach (var sheetId in sheetList)
                 {
-                    var newSheet = DuplicateSheet(Doc, sheetId.Elem.Id, prefix);
                     Element sourceSheetElement = Doc.GetElement(sheetId.Elem.Id);
                     ViewSheet sourceSheet = sourceSheetElement as ViewSheet;
-                    DuplivcateAllViwesInSheet(Doc, sourceSheet, newSheet, prefix);
-                    DuplivcateAllLegendInSheet(Doc, sourceSheet, newSheet);
-                    DuplicateSchedule(Doc, sourceSheet, newSheet);
-                    CopyTextNotes(Doc, sourceSheet, newSheet);
-                    CopyGenericAnnotation(Doc, sourceSheet, newSheet);
                     window.Window.progressBar1.PerformStep();
+                    try
+                    {
+                        var newSheet = DuplicateSheet(Doc, sheetId.Elem.Id, prefix);
+                        DuplivcateAllViwesInSheet(Doc, sourceSheet, newSheet, prefix);
+                        DuplivcateAllLegendInSheet(Doc, sourceSheet, newSheet);
+                        DuplicateSchedule(Doc, sourceSheet, newSheet);
+                        CopyTextNotes(Doc, sourceSheet, newSheet);
+                        CopyGenericAnnotation(Doc, sourceSheet, newSheet);
+                    }
+                    catch (Exception ex)
+                    {
+                        IsDebugWindow.AddRow($"Лист {sourceSheet.SheetNumber}-{sourceSheet.Name} не удалось скопировать\nОшибка {ex}");
+                    }
                 }
                 trans.Commit();
                 window.Window.progressBar1.Value = selectedNode.Count;
             }
             CollectAllSheets(Doc);
+            IsDebugWindow.Show();
         }
 
         void DuplivcateAllViwesInSheet(Document doc, ViewSheet sourceSheet, ViewSheet newSheet, string prefix)
@@ -191,11 +202,11 @@ namespace ISTools.ISTools.SheetsCopy
 
                     if (schedule != null & !schedule.IsTitleblockRevisionSchedule)
                     {
-                        // Получаем позицию спецификации на исходном листе
                         XYZ schedulePosition = originalSchedule.Point;
 
                         // Создаем новую спецификацию на новом листе
-                        ScheduleSheetInstance.Create(doc, newSheet.Id, scheduleId, schedulePosition);
+                        var newSchedule = ScheduleSheetInstance.Create(doc, newSheet.Id, scheduleId, schedulePosition, originalSchedule.SegmentIndex);
+
                     }
                 }
             }
@@ -203,37 +214,43 @@ namespace ISTools.ISTools.SheetsCopy
 
         private void CopyTextNotes(Document doc, ViewSheet sourceSheet, ViewSheet newSheet)
         {
-            FilteredElementCollector textCollector = new FilteredElementCollector(doc, sourceSheet.Id);
-            textCollector.OfCategory(BuiltInCategory.OST_TextNotes);
+            var textCollector = new FilteredElementCollector(doc, sourceSheet.Id)
+                .OfCategory(BuiltInCategory.OST_TextNotes)
+                .ToElementIds()
+                .Cast<ElementId>()
+                .ToList();
 
-            foreach (TextNote textNote in textCollector)
+            if (textCollector.Count != 0)
             {
-                XYZ position = textNote.Coord;
-                string text = textNote.Text;
-                TextNote.Create(doc, newSheet.Id, position, text, textNote.GetTypeId());
+                ElementTransformUtils.CopyElements(sourceSheet, textCollector, newSheet, null, null);
             }
         }
 
         private void CopyGenericAnnotation(Document doc, ViewSheet sourceSheet, ViewSheet newSheet)
         {
             var annotationCollector = new FilteredElementCollector(doc, sourceSheet.Id).OfCategory(BuiltInCategory.OST_GenericAnnotation).ToElementIds().ToList();
-            if (annotationCollector.Count != 0 )
+            if (annotationCollector.Count != 0)
             {
                 ElementTransformUtils.CopyElements(sourceSheet, annotationCollector, newSheet, null, null);
             }
-            
+
         }
 
         ViewSheet DuplicateSheet(Document doc, ElementId sourceSheetId, string prefix)
         {
-            var sourceTitleBlock = new FilteredElementCollector(doc, sourceSheetId).OfCategory(BuiltInCategory.OST_TitleBlocks).FirstElement();
+            var sourceTitleBlock = new FilteredElementCollector(doc, sourceSheetId)
+                .OfCategory(BuiltInCategory.OST_TitleBlocks)
+                .Cast<FamilyInstance>()
+                .First();
+            XYZ originTitle = sourceTitleBlock.GetTransform().Origin;
+            Location sourceLocation = sourceTitleBlock.Location;
             Element sourceSheetElement = doc.GetElement(sourceSheetId);
             ViewSheet sourceSheet = sourceSheetElement as ViewSheet;
-            ViewSheet newSheet = ViewSheet.Create(doc, sourceTitleBlock.GetTypeId());
+            ViewSheet newSheet = ViewSheet.Create(doc, ElementId.InvalidElementId);
             newSheet.SheetNumber = prefix + sourceSheet.SheetNumber;
             newSheet.Name = sourceSheet.Name;
-            var newTitleBlock = new FilteredElementCollector(doc, newSheet.Id).OfCategory(BuiltInCategory.OST_TitleBlocks).FirstElement();
-            CopyParameters(sourceTitleBlock, newTitleBlock, doc, new List<string>() { "Номер листа" });
+            var elementstoCopu = new List<ElementId>() { sourceTitleBlock.Id };
+            ElementTransformUtils.CopyElements(sourceSheet, elementstoCopu, newSheet, null, null);
             CopyParameters(sourceSheet, newSheet, doc, new List<string>() { "Номер листа" });
             return newSheet;
         }
