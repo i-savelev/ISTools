@@ -57,7 +57,7 @@
 
 Перенумерация выбранного набора листов. Есть возможность задавать префиксы, суффиксы и количество нулей.
 
-[wiki](https://github.com/i-savelev/ISTools/wiki/%D0%9D%D0%BE%D0%BC%D0%B5%D1%80%D0%B0-%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2)
+Подробнее: [Номера листов](https://github.com/i-savelev/ISTools/wiki/%D0%9D%D0%BE%D0%BC%D0%B5%D1%80%D0%B0-%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2)
 
 ### Параметры из помещений
 
