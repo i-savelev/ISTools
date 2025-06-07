@@ -9,7 +9,7 @@ namespace ISTools
     public class SchedulesTable : IExternalCommand
     {
         //---PluginsManager---//
-        public static string IS_TAB_NAME => "#";
+        public static string IS_TAB_NAME => "#|#test|#bim";
         public static string IS_NAME => "Ведомость спецификаций";
         public static string IS_IMAGE => "";
         public static string IS_DESCRIPTION => "Тестирвоание плагина для ведомости спецификаций";

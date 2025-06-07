@@ -46,7 +46,7 @@ namespace ISTools
                 .ToList();
 
             List<ObjRvtLink> objRvtLinks = new List<ObjRvtLink>();
-            List<string> linkList = new List<string>() {doc.Title};
+            List<string> linkList = new List<string>() { doc.Title };
             Dictionary<string, string> parametersDict = new Dictionary<string, string>();
 
             foreach (Document linkDoc in app.Documents)
@@ -138,7 +138,7 @@ namespace ISTools
                                     {
                                         window.dataGridView1.Rows.Add(str);
                                     }
-                                    catch{}
+                                    catch { }
                                 }
                             }
                         }
@@ -182,7 +182,7 @@ namespace ISTools
             {
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
-                List<string> outlist = new List<string>();   
+                List<string> outlist = new List<string>();
                 var offset = (double)window.numericUpDown1.Value / 304.8;
                 var thickness = (double)window.numericUpDown2.Value / 304.8;
                 List<string> selectLinkList = new List<string>();
@@ -255,11 +255,11 @@ namespace ISTools
                         }
                         catch
                         {
-                            outlist.Add($"{r.room.Name}_Id {r.room.Id}");
+                            IsDebugWindow.AddRow($"Не обработано помещение {r.room.Name}_Id {r.room.Id}");
                         }
                     }
                     tx.Commit();
-                    TaskDialog.Show("Список необработанных помещений", string.Join("\n", outlist));
+                    IsDebugWindow.Show();
                     window.progressBar1.Value = rooms.Count;
                     stopwatch.Stop();
                     TimeSpan elapsedTime = stopwatch.Elapsed;
@@ -305,7 +305,7 @@ namespace ISTools
                                 }
                             }
                         }
-                    }   
+                    }
                 }
                 if ((String.Join("", selectLinkList).Contains(doc.Title)))
                 {
@@ -339,7 +339,7 @@ namespace ISTools
                     foreach (var param in parametersDict)
                     {
                         Dictionary<ElementId, List<string>> map = new Dictionary<ElementId, List<string>>();
-                        
+
                         foreach (ObjRoom r in rooms)
                         {
                             window.progressBar1.PerformStep();
@@ -368,22 +368,30 @@ namespace ISTools
                                     {
                                         ObjRvt obj = new ObjRvt();
                                         obj.elem = element;
-                                        var p = r.room.LookupParameter(param.Key).AsValueString();
-                                        if (!map.ContainsKey(element.Id)) map.Add(element.Id, new List<string>());
-                                        if (!map[element.Id].Contains(p)) map[element.Id].Add(p);
-                                        obj.SetParam(param.Value, string.Join(window.toolStripTextBox2.Text, map[element.Id]));
+                                        var mark = obj.GetParamAsString("Марка");
+                                        if (!mark.Contains("##room"))
+                                        {
+                                            var p = r.room.LookupParameter(param.Key).AsValueString();
+                                            if (!map.ContainsKey(element.Id)) map.Add(element.Id, new List<string>());
+                                            if (!map[element.Id].Contains(p)) map[element.Id].Add(p);
+                                            obj.SetParam(param.Value, string.Join(window.toolStripTextBox2.Text, map[element.Id]));
+                                        }
+
                                     }
-                                    catch { }
+                                    catch (Exception ex)
+                                    {
+                                        IsDebugWindow.AddRow($"{ex}");
+                                    }
                                 }
                             }
                             catch
                             {
-                                outlist.Add($"{r.room.Name}_Id {r.room.Id}");
+                                IsDebugWindow.AddRow($"Не обработано помещение {r.room.Name}_Id {r.room.Id}");
                             }
                         }
                     }
                     window.progressBar1.Value = rooms.Count;
-                    TaskDialog.Show("Список необработанных помещений", string.Join("\n", outlist));
+                    IsDebugWindow.Show();
                     tx.Commit();
                     stopwatch.Stop();
                     TimeSpan elapsedTime = stopwatch.Elapsed;

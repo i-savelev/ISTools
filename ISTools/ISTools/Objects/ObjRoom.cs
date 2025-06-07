@@ -1,11 +1,7 @@
-﻿using System;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB.Architecture;
-using ISTools.MyObjects;
-
-
 
 
 namespace ISTools
@@ -37,7 +33,7 @@ namespace ISTools
             var offsetCurveLoop = CurveLoop.CreateViaOffset(curveLoop, offset, XYZ.BasisZ);
             var list = new List<CurveLoop>() { offsetCurveLoop };
             var roomSolid = GeometryCreationUtilities.CreateExtrusionGeometry(list, XYZ.BasisZ, room.get_Parameter(BuiltInParameter.ROOM_HEIGHT).AsDouble() - thickness + offset);
-             return roomSolid;
+            return roomSolid;
         }
         public void SetRoomSolid(double offset, double thickness)
         {
@@ -59,7 +55,7 @@ namespace ISTools
             var override_settings = new OverrideGraphicSettings();
             override_settings.SetSurfaceForegroundPatternColor(color);
             override_settings.SetCutForegroundPatternId(solid_pattern.Id);
-            override_settings.SetCutForegroundPatternColor(color);  
+            override_settings.SetCutForegroundPatternColor(color);
             override_settings.SetSurfaceTransparency(50);
             override_settings.SetSurfaceForegroundPatternId(solid_pattern.Id);
             ds.LookupParameter("Марка").Set($"##room_{room.Name}-{room.Number}");

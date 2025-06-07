@@ -172,8 +172,8 @@ namespace ISTools
                     using (ExcelPackage excelPackage = new ExcelPackage(existingFile))
                     {
                         ExcelPackage excel = new ExcelPackage(existingFile);
-                        window.toolStripButton2.Click += (s, e) => { 
-                            IsUtils.Save_opened_excel(excel, window.toolStripProgressBar2); 
+                        window.toolStripButton2.Click += (s, e) => {
+                            IsUtils.Save_opened_excel(excel, window.toolStripProgressBar2);
                         };
                         IsUtils.AddColumnHeaderFromExcel(excelPackage,
                             window.toolStripTextBox1.Text,
@@ -182,7 +182,7 @@ namespace ISTools
                         var rowCount = IsUtils.GetRowExcelCount(excelPackage, window.toolStripTextBox1.Text);
                         var excelData = IsUtils.GetListOfStringFromExcel(excelPackage, window.toolStripTextBox1.Text);
 
-                        foreach (ExcelWorksheet worksheet in excelPackage.Workbook.Worksheets)
+                        foreach (ExcelWorksheet worksheet in excel.Workbook.Worksheets)
                         {
                             if (worksheet.Name == window.toolStripTextBox1.Text)
                             {
@@ -195,6 +195,7 @@ namespace ISTools
                                         window.dataGridView2.Rows.Add(str);
                                         foreach (string s in str)
                                         {
+                                            IsDebugWindow.AddRow(s);
                                             worksheet.Cells[rowCount, n].Value = s;
                                             n += 1;
                                         }
@@ -283,7 +284,7 @@ namespace ISTools
                                 SetParamToElement(parametersDict, elem, paramValueCountDict, category_name_key);
                             }
                         }
-                        catch{}
+                        catch { }
                     }
                     foreach (var pij in platesInJoint)
                     {
@@ -295,7 +296,7 @@ namespace ISTools
                 }
             }
             return Result.Succeeded;
-            }
+        }
 
         void SetParamToElement(Dictionary<string, Dictionary<string, string>> parametersDict,
             Element elem,
@@ -304,7 +305,7 @@ namespace ISTools
             )
         {
             try
-            {  
+            {
                 foreach (var param in parametersDict)
                 {
                     var count = "";
@@ -326,7 +327,7 @@ namespace ISTools
                         }
                         catch { }
                     }
-                }    
+                }
             }
             catch { }
         }
@@ -399,4 +400,3 @@ namespace ISTools
         }
     }
 }
-
