@@ -101,7 +101,7 @@ namespace ISTools
                     @"ISTools.Resources.ParamMapping32.png",
                     @"ISTools.Resources.ParamMapping32.png",
                     "Копирование значений параметров из помещений в элементы, которые в нем расположены. Также есть возможность отстраивать геометрию помещений.",
-                    @"https://github.com/i-savelev/ISTools/wiki/Параметры-из-помещений"
+                    @"https://github.com/i-savelev/ISTools/wiki/Мэппинг-параметров"
                     );
 
                 IsUtils.AddButtonToExistTab(

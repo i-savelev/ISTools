@@ -14,7 +14,7 @@ namespace ISTools
         //---PluginsManager---//
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Комбинация параметров";
-        public static string IS_DESCRIPTION => "Команда комбинирует указанные параметры";
+        public static string IS_DESCRIPTION => "Команда комбинирует указанные параметры\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Комбинация-параметров";
         public static string IS_IMAGE => "ISTools.Resources.Combine32.png";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)

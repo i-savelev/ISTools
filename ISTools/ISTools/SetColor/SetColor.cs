@@ -16,7 +16,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Раскраска элементов";
         public static string IS_IMAGE => "ISTools.Resources.Set_color_32.png";
-        public static string IS_DESCRIPTION => "Плагин позволяет раскрасить элементы в цвета по выбранному параметру";
+        public static string IS_DESCRIPTION => "Плагин позволяет раскрасить элементы в цвета по выбранному параметру\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Раскраска-элементов";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

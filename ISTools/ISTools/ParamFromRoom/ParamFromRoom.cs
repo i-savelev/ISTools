@@ -21,7 +21,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Параметры из помещений";
         public static string IS_IMAGE => "ISTools.Resources.Rooms32.png";
-        public static string IS_DESCRIPTION => "Команда позволяет передавать значения параметров из помещений в элементы модели";
+        public static string IS_DESCRIPTION => "Команда позволяет передавать значения параметров из помещений в элементы модели\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Параметры-из-помещений";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

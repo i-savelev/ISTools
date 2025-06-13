@@ -18,7 +18,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Каталог марок";
         public static string IS_IMAGE => "ISTools.Resources.MarksCatalog32.png";
-        public static string IS_DESCRIPTION => "Команда позволяет формировать каталог значений параметров и заполнять указаныне параметры по значениям других параметров";
+        public static string IS_DESCRIPTION => "Команда позволяет формировать каталог значений параметров и заполнять указаныне параметры по значениям других параметров\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Каталог-марок";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

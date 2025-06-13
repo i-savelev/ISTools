@@ -11,7 +11,7 @@ namespace ISTools
         //-********-//
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Параметры материалов";
-        public static string IS_DESCRIPTION => "Команда переносит значение из параметра материала 'Модель' в указанный параметр элемента\nВ случае, если элементу принадлежит несколько материалов, значения параметра будут разделены указанным разделителем";
+        public static string IS_DESCRIPTION => "Команда переносит значение из параметра материала 'Модель' в указанный параметр элемента\nВ случае, если элементу принадлежит несколько материалов, значения параметра будут разделены указанным разделителем\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Параметры-материалов";
         public static string IS_IMAGE => "ISTools.Resources.Materials32.png";
         //-********-//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)

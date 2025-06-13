@@ -17,7 +17,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Парметры по категории";
         public static string IS_IMAGE => "ISTools.Resources.ParamByCat32.png";
-        public static string IS_DESCRIPTION => "Команда заполняет параметры по категориям";
+        public static string IS_DESCRIPTION => "Команда заполняет параметры по категориям\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Каталог-семейств";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

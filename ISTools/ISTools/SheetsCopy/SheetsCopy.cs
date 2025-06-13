@@ -12,7 +12,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Копирование листов";
         public static string IS_IMAGE => "ISTools.Resources.SheetsCopy32.png";
-        public static string IS_DESCRIPTION => "Плагин позволяет копировать листы вместе с видами, аннатциями, текстом и параметрами";
+        public static string IS_DESCRIPTION => "Плагин позволяет копировать листы вместе с видами, аннатциями, текстом и параметрами\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Копирование-листов";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

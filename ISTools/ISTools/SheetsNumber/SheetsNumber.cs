@@ -18,7 +18,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Номера листов";
         public static string IS_IMAGE => "ISTools.Resources.Sheet_number32.png";
-        public static string IS_DESCRIPTION => "Инструкция: \nПлагин позволяет автоматически перенумеровать выбранные наборы листов";
+        public static string IS_DESCRIPTION => "Инструкция: \nПлагин позволяет автоматически перенумеровать выбранные наборы листов\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Номера-листов";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

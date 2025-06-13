@@ -13,7 +13,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Фильтры на листах";
         public static string IS_IMAGE => "ISTools.Resources.SheetsCopy32.png";
-        public static string IS_DESCRIPTION => "Позволяет массово перенести фильтры на выбранные виды и шаблоны. Если к виду или шаблону уже применен такой фильтр, будет перезаписан";
+        public static string IS_DESCRIPTION => "Позволяет массово перенести фильтры на выбранные виды и шаблоны. Если к виду или шаблону уже применен такой фильтр, будет перезаписан\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Фильтры-видов";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

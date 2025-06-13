@@ -17,7 +17,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Мэппинг параметров";
         public static string IS_IMAGE => "ISTools.Resources.ParamMapping32.png";
-        public static string IS_DESCRIPTION => "Команда заполняет согласно правилам мэппинга";
+        public static string IS_DESCRIPTION => "Команда заполняет согласно правилам мэппинга\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Мэппинг-параметров";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

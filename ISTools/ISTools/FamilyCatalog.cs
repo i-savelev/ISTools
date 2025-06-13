@@ -22,7 +22,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Каталог семейств";
         public static string IS_IMAGE => "ISTools.Resources.FamilyCatalog32.png";
-        public static string IS_DESCRIPTION => "Данная команда имеет три функции:\n- создание каталога семейств и типоразмеров системных элементов модели\n- дополнение существующего каталога\n- запись значений параметров из каталога в параметры элементов модели";
+        public static string IS_DESCRIPTION => "Данная команда имеет три функции:\n- создание каталога семейств и типоразмеров системных элементов модели\n- дополнение существующего каталога\n- запись значений параметров из каталога в параметры элементов модели\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Каталог-семейств";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

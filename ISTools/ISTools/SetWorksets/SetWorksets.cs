@@ -22,7 +22,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Рабочие наборы";
         public static string IS_IMAGE => "ISTools.Resources.Worksets32.png";
-        public static string IS_DESCRIPTION => "Инструкция:\nСкрипт автоматически присваевает элементам рабочие наборы по заданным правилам";
+        public static string IS_DESCRIPTION => "Инструкция:\nСкрипт автоматически присваевает элементам рабочие наборы по заданным правилам\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Рабочие-наборы";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

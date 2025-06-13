@@ -15,7 +15,7 @@ namespace ISTools
         public static string IS_TAB_NAME => "ISTools";
         public static string IS_NAME => "Многослойные конструкции";
         public static string IS_IMAGE => "ISTools.Resources.TypesRename32.png";
-        public static string IS_DESCRIPTION => "Команда предоставляет удобный интерфейс для переименования многослойных коснтуркций";
+        public static string IS_DESCRIPTION => "Команда предоставляет удобный интерфейс для переименования многослойных коснтуркций\nПодробнее: https://github.com/i-savelev/ISTools/wiki/Многослойные-конструкции";
         //---PluginsManager---//
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
