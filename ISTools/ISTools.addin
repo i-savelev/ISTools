@@ -1,0 +1,11 @@
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>ISTools</Name>
+		<Assembly>ISTools\ISTools.dll</Assembly>
+		<AddInId>89905C29-797A-4702-8F3C-401ACAFAC71B</AddInId>
+		<FullClassName>ISTools.App</FullClassName>
+		<VendorId>i_savelev</VendorId>
+		<VendorDescription>https://github.com/i-savelev/PluginsManager</VendorDescription>
+		<Text>ISTools</Text>
+	</AddIn>
+</RevitAddIns>

@@ -94,6 +94,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
     <Compile Include="ISTools\IS_Utils\Debugger.cs">
       <SubType>Form</SubType>
     </Compile>

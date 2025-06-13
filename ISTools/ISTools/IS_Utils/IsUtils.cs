@@ -86,7 +86,7 @@ namespace ISTools
         /// <typeparam name="T"></typeparam>
         /// <param name="file_path"></param>
         /// <returns></returns>
-        public static T LoadXml<T>(string file_path) 
+        public static T LoadXml<T>(string file_path)
             where T : class
         {
             string userName = Environment.UserName;
@@ -103,12 +103,12 @@ namespace ISTools
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T LoadXmlDialog<T>() 
+        public static T LoadXmlDialog<T>()
             where T : class
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {   
+            {
                 string fileName = openFileDialog.FileName;
                 string fileDirectory = openFileDialog.InitialDirectory;
                 var filePath = $"{fileDirectory}{fileName}";
@@ -199,9 +199,9 @@ namespace ISTools
             UIApplication uiApp,
             string buttonName,
             string className,
-            string tabName, 
-            string panelName, 
-            string largeImage, 
+            string tabName,
+            string panelName,
+            string largeImage,
             string smallImage,
             string tooltip = null,
             string contextualHelp = null
@@ -230,7 +230,7 @@ namespace ISTools
         }
 
         /// <summary>
-        /// Create a button on yhe tab and panel
+        /// Create a button on the tab and panel
         /// </summary>
         /// <param name="uiApp"></param>
         /// <param name="buttonName"></param>
@@ -254,10 +254,38 @@ namespace ISTools
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
             PushButtonData buttonData = new PushButtonData(buttonName, buttonName, assemblyPath, className);
             var button = panel.AddItem(buttonData) as PushButton;
-            button.LargeImage = new BitmapImage(new Uri(largeImage, UriKind.RelativeOrAbsolute));
-            button.Image = new BitmapImage(new Uri(smallImage, UriKind.RelativeOrAbsolute));
+            button.LargeImage = GetImageFromResources(largeImage);
+            button.Image = GetImageFromResources(smallImage);
             if (tooltip != null) button.ToolTip = tooltip;
             if (contextualHelp != null) button.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, contextualHelp));
+        }
+
+        /// <summary>
+        /// get bitmap image from resources
+        /// </summary>
+        /// <param name="resourceName"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static BitmapImage GetImageFromResources(string resourceName)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream($"{resourceName}"))
+            {
+                if (stream is null)
+                {
+                    throw new ArgumentException($"Ресурс '{resourceName}' не найден.");
+                }
+
+                var bitmap = new BitmapImage();
+
+                bitmap.BeginInit();
+                bitmap.StreamSource = stream;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                bitmap.Freeze();
+
+                return bitmap;
+            }
         }
 
         /// <summary>
