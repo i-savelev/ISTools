@@ -1,6 +1,7 @@
 # ISTools
 
-![image](https://github.com/user-attachments/assets/35d8e4e9-01ed-4b47-9e84-449a87c96b42)
+![image](https://github.com/user-attachments/assets/82ff878d-cc79-4a30-8df8-9f431932f895)
+
 
 ## Установка
 
