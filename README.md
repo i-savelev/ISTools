@@ -1,5 +1,7 @@
 # ISTools
 
+![image](https://github.com/user-attachments/assets/35d8e4e9-01ed-4b47-9e84-449a87c96b42)
+
 ## Установка
 
 ### Вариант 1
@@ -10,8 +12,11 @@
 
 <img src="https://github.com/user-attachments/assets/09fab79d-038f-47e3-9b32-f64bb6c530b8" alt="drawing" style="width:200px;"/>
 
-### Вариант 2  (В работе)
+### Вариант 2
 Классическая установка с помощью ISTools.msi. Поддерживаются версии Revit 2021 - 2024. В Revit появится панель ISTools.
+
+![image](https://github.com/user-attachments/assets/92cbeac9-e1ed-406d-93e5-dc66aa1f1eeb)
+
 
 ## Команды
 
