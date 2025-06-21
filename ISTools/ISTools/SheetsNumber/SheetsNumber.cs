@@ -27,7 +27,7 @@ namespace ISTools
 
             List<ObjSheet> objSheetList = new List<ObjSheet>();
 
-            List<string> selectedLists = new List<string>(); 
+            List<string> selectedLists = new List<string>();
 
             List<TreeNode> selectedNode = new List<TreeNode>();
 
@@ -37,7 +37,7 @@ namespace ISTools
                 OfCategory(BuiltInCategory.OST_Sheets).
                 WhereElementIsNotElementType().
                 Cast<ViewSheet>().
-                ToList(); 
+                ToList();
 
             DataTable dtSheets = new DataTable();
 
@@ -123,17 +123,18 @@ namespace ISTools
                 int firstNumber = (int)window.numericUpDown1.Value;
                 int zerosCount = (int)window.numericUpDown2.Value;
                 string format = new string('0', zerosCount);
-                var uniqueNameList = selectedLists.Select(obj => obj.Split(':')[1].TrimStart(' ')).ToList();
+
                 foreach (var s in selectedLists)
                 {
                     string formattedNumber = firstNumber.ToString(format);
                     var preview = $"{s.Split(':')[0]} → {window.textBox2.Text}{formattedNumber}{window.textBox3.Text}: {s.Split(':')[1].TrimStart(' ')}";
                     var new_number = $"{window.textBox2.Text}{formattedNumber}{window.textBox3.Text}";
-                    
-                    if (objSheetList.Any(p => p.Number == new_number))
+
+                    var list = objSheetList.FirstOrDefault(p => p.Number == new_number);
+
+                    if (list != null)
                     {
-                        var list = objSheetList.FirstOrDefault(p => p.Number == new_number);
-                        if (!uniqueNameList.Contains(list.Name))
+                        if (!selectedLists.Contains($"{list.Number}: {list.Name}"))
                         {
                             preview = "!УЖЕ ИСПОЛЬЗУЕТСЯ-" + preview;
                         }
@@ -244,7 +245,7 @@ namespace ISTools
                             selectedList.Add(childNode.Text);
                             selectedNodes.Add(childNode);
                         }
-                    }   
+                    }
                 }
             }
 
