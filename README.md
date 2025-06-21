@@ -11,7 +11,7 @@
 
 Для этого нужно установить PluginsManager и указать путь до файла ISTools.dll. В окне будут отображены команды:
 
-<img src="https://github.com/user-attachments/assets/09fab79d-038f-47e3-9b32-f64bb6c530b8" alt="drawing" style="width:200px;"/>
+<img src="https://github.com/user-attachments/assets/22478cbc-cc07-4648-8f6e-b3ee6f70c4ce" alt="drawing" style="width:200px;"/>
 
 ### Вариант 2
 Классическая установка с помощью ISTools.msi. Поддерживаются версии Revit 2021 - 2024. В Revit появится панель ISTools.
