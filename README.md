@@ -9,7 +9,9 @@
 
 Команды запускать с помощью другого моего плагина  [PluginsManager](https://github.com/i-savelev/PluginsManager)
 
-Для этого нужно установить PluginsManager и указать путь до файла ISTools.dll. В окне будут отображены команды:
+Скачать и поместить в одну папку файлы ISTools.dll и EPPlus.dll.
+
+Для этого нужно установить PluginsManager и указать путь до папки с файлами ISTools.dll и EPPlus.dll. В окне будут отображены команды:
 
 <img src="https://github.com/user-attachments/assets/22478cbc-cc07-4648-8f6e-b3ee6f70c4ce" alt="drawing" style="width:200px;"/>
 
