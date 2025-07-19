@@ -28,9 +28,25 @@
 
                 <Directory Id="SUBFOLDER24" Name="ISTools">
 
+                  <Component Id="Component.EPPlus.dll_1631856888" Guid="81aa82d1-f517-468f-9660-f458ad148f93">
+                    <File Id="EPPlus.dll_1631856888" Source="..\ISTools\bin\Build\EPPlus.dll" />
+                    <RemoveFolder Id="SUBFOLDER24" On="uninstall" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
+                  <Component Id="Component.EPPlus.xml_932449500" Guid="81aa82d1-f517-468f-9660-f458756a74a6">
+                    <File Id="EPPlus.xml_932449500" Source="..\ISTools\bin\Build\EPPlus.xml" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
                   <Component Id="Component.ISTools.dll_3003030487" Guid="81aa82d1-f517-468f-9660-f458673cc63a">
                     <File Id="ISTools.dll_3003030487" Source="..\ISTools\bin\Build\ISTools.dll" />
-                    <RemoveFolder Id="SUBFOLDER24" On="uninstall" />
 
                     <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
                       <RegistryValue Value="0" Type="string" KeyPath="yes" />
@@ -53,9 +69,25 @@
 
                 <Directory Id="SUBFOLDER23" Name="ISTools">
 
+                  <Component Id="Component.EPPlus.dll_1039585699" Guid="81aa82d1-f517-468f-9660-f45881bb07df">
+                    <File Id="EPPlus.dll_1039585699" Source="..\ISTools\bin\Build\EPPlus.dll" />
+                    <RemoveFolder Id="SUBFOLDER23" On="uninstall" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
+                  <Component Id="Component.EPPlus.xml_340178311" Guid="81aa82d1-f517-468f-9660-f458dfae0e38">
+                    <File Id="EPPlus.xml_340178311" Source="..\ISTools\bin\Build\EPPlus.xml" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
                   <Component Id="Component.ISTools.dll_1918317602" Guid="81aa82d1-f517-468f-9660-f45815f33e9f">
                     <File Id="ISTools.dll_1918317602" Source="..\ISTools\bin\Build\ISTools.dll" />
-                    <RemoveFolder Id="SUBFOLDER23" On="uninstall" />
 
                     <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
                       <RegistryValue Value="0" Type="string" KeyPath="yes" />
@@ -78,9 +110,25 @@
 
                 <Directory Id="SUBFOLDER22" Name="ISTools">
 
+                  <Component Id="Component.EPPlus.dll_2123617199" Guid="81aa82d1-f517-468f-9660-f4588affdcae">
+                    <File Id="EPPlus.dll_2123617199" Source="..\ISTools\bin\Build\EPPlus.dll" />
+                    <RemoveFolder Id="SUBFOLDER22" On="uninstall" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
+                  <Component Id="Component.EPPlus.xml_1424209811" Guid="81aa82d1-f517-468f-9660-f4585cd55357">
+                    <File Id="EPPlus.xml_1424209811" Source="..\ISTools\bin\Build\EPPlus.xml" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
                   <Component Id="Component.ISTools.dll_3010351864" Guid="81aa82d1-f517-468f-9660-f458c44d9439">
                     <File Id="ISTools.dll_3010351864" Source="..\ISTools\bin\Build\ISTools.dll" />
-                    <RemoveFolder Id="SUBFOLDER22" On="uninstall" />
 
                     <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
                       <RegistryValue Value="0" Type="string" KeyPath="yes" />
@@ -103,9 +151,25 @@
 
                 <Directory Id="SUBFOLDER21" Name="ISTools">
 
+                  <Component Id="Component.EPPlus.dll_4256480301" Guid="81aa82d1-f517-468f-9660-f45823f17229">
+                    <File Id="EPPlus.dll_4256480301" Source="..\ISTools\bin\Build\EPPlus.dll" />
+                    <RemoveFolder Id="SUBFOLDER21" On="uninstall" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
+                  <Component Id="Component.EPPlus.xml_3557072913" Guid="81aa82d1-f517-468f-9660-f4586d508379">
+                    <File Id="EPPlus.xml_3557072913" Source="..\ISTools\bin\Build\EPPlus.xml" />
+
+                    <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                      <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                    </RegistryKey>
+                  </Component>
+
                   <Component Id="Component.ISTools.dll_848120294" Guid="81aa82d1-f517-468f-9660-f458f395dfd7">
                     <File Id="ISTools.dll_848120294" Source="..\ISTools\bin\Build\ISTools.dll" />
-                    <RemoveFolder Id="SUBFOLDER21" On="uninstall" />
 
                     <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
                       <RegistryValue Value="0" Type="string" KeyPath="yes" />
@@ -154,6 +218,8 @@
       <Condition Level="1"><![CDATA[PROP1 = 1]]></Condition>
 
       <ComponentRef Id="Component.ISTools.addin_1029322138" />
+      <ComponentRef Id="Component.EPPlus.dll_1631856888" />
+      <ComponentRef Id="Component.EPPlus.xml_932449500" />
       <ComponentRef Id="Component.ISTools.dll_3003030487" />
       <ComponentRef Id="Autodesk" />
       <ComponentRef Id="Revit" />
@@ -164,6 +230,8 @@
       <Condition Level="1"><![CDATA[PROP1 = 1]]></Condition>
 
       <ComponentRef Id="Component.ISTools.addin_1101215160" />
+      <ComponentRef Id="Component.EPPlus.dll_1039585699" />
+      <ComponentRef Id="Component.EPPlus.xml_340178311" />
       <ComponentRef Id="Component.ISTools.dll_1918317602" />
       <ComponentRef Id="Autodesk" />
       <ComponentRef Id="Revit" />
@@ -174,6 +242,8 @@
       <Condition Level="1"><![CDATA[PROP1 = 1]]></Condition>
 
       <ComponentRef Id="Component.ISTools.addin_3326358967" />
+      <ComponentRef Id="Component.EPPlus.dll_2123617199" />
+      <ComponentRef Id="Component.EPPlus.xml_1424209811" />
       <ComponentRef Id="Component.ISTools.dll_3010351864" />
       <ComponentRef Id="Autodesk" />
       <ComponentRef Id="Revit" />
@@ -184,6 +254,8 @@
       <Condition Level="1"><![CDATA[PROP1 = 1]]></Condition>
 
       <ComponentRef Id="Component.ISTools.addin_157627829" />
+      <ComponentRef Id="Component.EPPlus.dll_4256480301" />
+      <ComponentRef Id="Component.EPPlus.xml_3557072913" />
       <ComponentRef Id="Component.ISTools.dll_848120294" />
       <ComponentRef Id="Autodesk" />
       <ComponentRef Id="Revit" />
